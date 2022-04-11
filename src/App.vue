@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <MainHeader/>
+    <GPBar/>
+    <NewsContainer/>
+    <DriverSlide/>
+    <ChartDriver/>
+    <ChartConstructor/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainHeader from './components/MainHeader.vue'
+import GPBar from './components/GPbar.vue'
+import DriverSlide from './components/DriverSlide.vue'
+import NewsContainer from './components/NewsContainer.vue'
+import ChartDriver from './components/ChartDriver.vue'
+import ChartConstructor from './components/ChartConstructor.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainHeader,GPBar,DriverSlide,NewsContainer,ChartDriver,ChartConstructor
   }
 }
 </script>
@@ -23,6 +32,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 0;
 }
 </style>
