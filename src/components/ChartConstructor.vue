@@ -22,7 +22,7 @@ export default {
   },
   data: function() {
     return {
-      constructors: data.constructors
+      constructors: data.constructors.sort(function(a, b) {return b.point-a.point;})
     }
   }
 }

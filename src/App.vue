@@ -2,25 +2,23 @@
   <div id="app">
     <MainHeader/>
     <GPBar/>
-    <NewsContainer/>
-    <DriverSlide/>
-    <ChartDriver/>
-    <ChartConstructor/>
+    <ContentBox/>
+    <ChartBox/>
+    <RecommandVideo/>
   </div>
 </template>
 
 <script>
 import MainHeader from './components/MainHeader.vue'
 import GPBar from './components/GPbar.vue'
-import DriverSlide from './components/DriverSlide.vue'
-import NewsContainer from './components/NewsContainer.vue'
-import ChartDriver from './components/ChartDriver.vue'
-import ChartConstructor from './components/ChartConstructor.vue'
+import ContentBox from './components/ContentBox.vue'
+import ChartBox from './components/ChartBox.vue'
+import RecommandVideo from './components/RecommandVideo.vue'
 
 export default {
   name: 'App',
   components: {
-    MainHeader,GPBar,DriverSlide,NewsContainer,ChartDriver,ChartConstructor
+    MainHeader,GPBar,ContentBox,ChartBox,RecommandVideo
   }
 }
 </script>

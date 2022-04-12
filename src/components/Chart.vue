@@ -25,3 +25,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.chart {
+  clear: both;
+  background-color: beige;
+}
+</style>
