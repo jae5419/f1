@@ -1,5 +1,10 @@
 # f1
 
+만든계기
+고려사항
+주요기능
+추가예정
+
 ## Project setup
 ```
 npm install

@@ -1,11 +1,13 @@
 <template>
-  <div id="icon">
-    <div v-show="showSche" id="schedule">
+  <div id="sidebar">
+    <transition name="slide">
+    <div v-if="showSche" id="schedule">
       <h2>2022 Grand Prix</h2>
       <ul>
         <li v-for="(sche, i) in gplist" :key="i">{{ sche.date+" : "+sche.track }}</li>
       </ul>
     </div>
+    </transition>
     <div id="logo" @click="showSche=!showSche">ㅂ</div>
   </div>
 </template>
@@ -20,7 +22,7 @@ export default {
         {date: "3.18~3.20", track: "바레인"},
         {date: "3.25~3.27", track: "사우디아라비아"},
         {date: "4.8~4.10", track: "호주"},
-        {date: "4.22~4.24", track: "이태리"},
+        {date: "4.22~4.24", track: "이몰라"},
         {date: "5.6~5.8", track: "마이애미"},
         {date: "5.20~5.22", track: "스페인"},
         {date: "5.27~5.29", track: "모나코"},
@@ -32,7 +34,7 @@ export default {
         {date: "7.29~7.31", track: "헝가리"},
         {date: "8.26~8.28", track: "벨기에"},
         {date: "9.2~9.4", track: "네덜란드"},
-        {date: "9.9~9.11", track: "이태리"},
+        {date: "9.9~9.11", track: "몬자"},
         {date: "9.30~10.2", track: "싱가포르"},
         {date: "10.7~10.9", track: "일본"},
         {date: "10.21~10.23", track: "미국"},
@@ -46,14 +48,12 @@ export default {
 </script>
 
 <style scoped>
-#icon {
-  position: fixed;
-  left: 0;
-  top: 0;
+#sidebar {
+  position: relative;
 }
 
 #logo {
-  float: right;
+  position: absolute;
   font-size: 21px;
   font-style: italic;
   font-weight: bold;
@@ -62,9 +62,26 @@ export default {
 }
 
 #schedule {
-  float: left;
+  position: absolute;
   width: 300px;
   height: 100vh;
   background-color: lightyellow;
+}
+
+#schedule ul {
+  list-style: none;
+}
+
+.slide-enter-active {
+  transition:all .5s ease-out;
+}
+.slide-leave-active {
+  transition: all .4s ease-in;
+}
+.slide-enter, .slide-leave-to {
+  left: -22%;
+}
+.slide-enter-to, .slide-leave {
+  left: 0%;
 }
 </style>

@@ -25,6 +25,8 @@ export default {
 <style>
 #news {
     width: 62%;
+    background-color: beige;
+    padding: 20px;
 }
 
 #news>div {

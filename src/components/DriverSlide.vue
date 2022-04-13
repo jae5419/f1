@@ -1,12 +1,12 @@
 <template>
   <div id="driver">
-  <img :src="require(`@/assets/driverimg/${current.picture}`)" :alt="current.name">
-  <h3>{{ current.name }}</h3>
-  <p>{{ current.number }}</p>
-  <p>{{ current.team }}</p>
-  <p>point : {{ current.point }}</p>
-  <button @click="pre" class="pre">&lt;</button>
-  <button @click="next" class="next">&gt;</button>
+  <img :src="require(`@/assets/driverimg/${current.picture}`)" :alt="current.name" key="1">
+  <h3 key="2">{{ current.name }}</h3>
+  <p key="3">{{ current.number }}</p>
+  <p key="4">{{ current.team }}</p>
+  <p key="5">point : {{ current.point }}</p>
+  <button @click="pre" class="pre"><font-awesome-icon :icon="['fas', 'chevron-left']" /></button>
+  <button @click="next" class="next"><font-awesome-icon :icon="['fas', 'chevron-right']" /></button>
   </div>
 </template>
 
@@ -51,34 +51,32 @@ export default {
 
 <style>
 #driver {
-  width: 38%;
+  width: 30%;
+  margin: 0 20px;
+  padding: 20px;
+  background-color: beige;
 }
 
 #driver img {
   width: 103px;
   height: 103px;
-  float: left;
+  display: inline;
+}
+
+#driver button {
+  border: none;
+  border-radius: 5px;
+  background-color: dimgray;
+  opacity: 0.45;
+  padding: 5px 5px;
+  z-index: 100;
 }
 
 .pre {
-  display: inline;
-  position: relative;
-  top: -50%;
-  border: none;
-  background-color: darkslategray;
-  opacity: 0.5;
-  color: black;
-  font-weight: bold;
+  float: left;
 }
 
 .next {
-  display: inline;
-  position: relative;
-  top: -50%;
-  border: none;
-  background-color: darkslategray;
-  opacity: 0.5;
-  color: black;
-  font-weight: bold;
+  float: right;
 }
 </style>
