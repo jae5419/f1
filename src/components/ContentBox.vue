@@ -17,9 +17,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #content {
     margin: 50px 200px;
     display: flex;
+    flex-wrap: wrap;
 }
 </style>

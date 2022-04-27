@@ -31,4 +31,9 @@ export default {
   clear: both;
   background-color: beige;
 }
+
+.chart img {
+  width: 50px;
+  height: 50px;
+}
 </style>

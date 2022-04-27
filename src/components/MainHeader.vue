@@ -24,7 +24,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+#title {
+  background-color: aquamarine;
+  padding: 32px;
+}
+
 .util_menu {
   position: absolute;
   right: 10px;

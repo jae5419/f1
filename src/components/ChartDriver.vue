@@ -4,7 +4,7 @@
   <th>이름</th><th>소속팀</th><th>포인트</th>
   </template>
   <template #list="{row}">
-  <td>{{ row.name }}</td>
+  <td><img :src="require(`@/assets/driverimg/${row.picture}`)">{{ row.name }}</td>
   <td>{{ row.team }}</td>
   <td>{{ row.point }}</td>
   </template>
