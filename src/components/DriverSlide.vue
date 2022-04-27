@@ -1,10 +1,14 @@
 <template>
   <div id="driver">
-  <img :src="require(`@/assets/driverimg/${current.picture}`)" :alt="current.name" key="1">
-  <h3 key="2">{{ current.name }}</h3>
-  <p key="3">{{ current.number }}</p>
-  <p key="4">{{ current.team }}</p>
-  <p key="5">point : {{ current.point }}</p>
+  <transition-group name="fade">
+    <div v-for="(driver, i) in drivers" :key="driver.number" id="card">
+      <img :src="require(`@/assets/driverimg/${driver.picture}`)" :alt="driver.name" v-if="i==current">
+      <h3 v-if="i==current">{{ driver.name }}</h3>
+      <p v-if="i==current">{{ driver.number }}</p>
+      <p v-if="i==current">{{ driver.team }}</p>
+      <p v-if="i==current">point : {{ driver.point }}</p>
+    </div>
+  </transition-group>
   <button @click="pre" class="pre"><font-awesome-icon :icon="['fas', 'chevron-left']" /></button>
   <button @click="next" class="next"><font-awesome-icon :icon="['fas', 'chevron-right']" /></button>
   </div>
@@ -40,7 +44,10 @@ export default {
   },
   computed: {
     current: function() {
-      return this.drivers[this.index%this.drivers.length];
+      return this.index%this.drivers.length;
+    },
+    currentImg: function() {
+      return this.drivers[this.index].picture;
     }
   },
   created: function() {
@@ -55,6 +62,7 @@ export default {
   margin: 0 20px;
   padding: 20px;
   background-color: beige;
+  position: relative;
 }
 
 #driver img {
@@ -70,6 +78,22 @@ export default {
   opacity: 0.45;
   padding: 5px 5px;
   z-index: 100;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  visibility: visible;
+  position: absolute;
+  width:100%;
+  opacity: 1;
+}
+.fade-enter,
+.fade-leave-to {
+  visibility: hidden;
+  width:100%;
+  opacity: 0;
 }
 
 .pre {
