@@ -36,62 +36,11 @@ export default {
         }
       }
     }
-  },
-  methods: {
-    pre: function() {
-      if(this.index>0)
-      {
-        this.index--;
-      }
-      else
-      {
-        this.index=this.drivers.length-1;
-      }
-      clearInterval(this.autoplay);
-    },
-    next: function() {
-      this.index++;
-      clearInterval(this.autoplay);
-    }
-  },
-  computed: {
-    current: function() {
-      return this.index%this.drivers.length;
-    },
-    currentImg: function() {
-      return this.drivers[this.index].picture;
-    }
-  },
-  created: function() {
-    this.autoplay=setInterval(() => {this.index++;}, 5000);
   }
 }
 </script>
 
 <style>
-#driver {
-  width: 30%;
-  margin: 0 20px;
-  padding: 20px;
-  background-color: beige;
-  position: relative;
-}
-
-#driver img {
-  width: 103px;
-  height: 103px;
-  display: inline;
-}
-
-#driver button {
-  border: none;
-  border-radius: 5px;
-  background-color: dimgray;
-  opacity: 0.45;
-  padding: 5px 5px;
-  z-index: 100;
-}
-
 .swiper {
   height: 300px;
   width: 100%;
