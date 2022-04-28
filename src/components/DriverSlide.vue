@@ -1,28 +1,40 @@
 <template>
-  <div id="driver">
-  <transition-group name="fade">
-    <div v-for="(driver, i) in drivers" :key="driver.number" id="card">
-      <img :src="require(`@/assets/driverimg/${driver.picture}`)" :alt="driver.name" v-if="i==current">
-      <h3 v-if="i==current">{{ driver.name }}</h3>
-      <p v-if="i==current">{{ driver.number }}</p>
-      <p v-if="i==current">{{ driver.team }}</p>
-      <p v-if="i==current">point : {{ driver.point }}</p>
-    </div>
-  </transition-group>
-  <button @click="pre" class="pre"><font-awesome-icon :icon="['fas', 'chevron-left']" /></button>
-  <button @click="next" class="next"><font-awesome-icon :icon="['fas', 'chevron-right']" /></button>
-  </div>
+  <swiper class="swiper" :options="swiperOption">
+    <swiper-slide v-for="(driver, i) in drivers" :key="i">
+      <div>
+        <img :src="require(`@/assets/driverimg/${driver.picture}`)" :alt="driver.name">
+        <h3>{{ driver.name }}</h3>
+        <p>{{ driver.number }}</p>
+        <p>{{ driver.team }}</p>
+        <p>point : {{ driver.point }}</p>
+      </div>
+    </swiper-slide>
+    <div class="swiper-button-prev" slot="button-prev"></div>
+    <div class="swiper-button-next" slot="button-next"></div>
+  </swiper>
 </template>
 
 <script>
 import data from '../data.json'
+import {swiper, swiperSlide} from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 
 export default {
   name: 'DriverSlide',
+  components: {swiper, swiperSlide},
   data: function() {
     return {
       drivers: data.drivers.sort(function(a, b) {return b.point-a.point}),
-      index: 0
+      index: 0,
+      swiperOption: {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      }
     }
   },
   methods: {
@@ -80,27 +92,15 @@ export default {
   z-index: 100;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.3s ease;
-  overflow: hidden;
-  visibility: visible;
-  position: absolute;
-  width:100%;
-  opacity: 1;
-}
-.fade-enter,
-.fade-leave-to {
-  visibility: hidden;
-  width:100%;
-  opacity: 0;
+.swiper {
+  height: 300px;
+  width: 100%;
 }
 
-.pre {
-  float: left;
-}
-
-.next {
-  float: right;
+.swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 </style>
